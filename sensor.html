@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Remoto MQTT</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <header>Monitoramento Remoto - Sensor de temperatura</header>
+    <div id="info"></div>
+    <div id="content">
+      <div class="flex">
+        <input type="range" id="temp" name="temp" min="0" max="50" value="30" />
+        <button type="button">Enviar</button>
+      </div>
+      <div class="mt-15">
+        <label for="tem">Temperatura: </label><span id="value">30 ºC</span>
+      </div>
+      <div id="logs" class="mt-15"></div>
+    </div>
+    <script src="src/js/mqtt.min.js"></script>
+    <script src="src/js/script-sensor.js"></script>
+  </body>
+</html>

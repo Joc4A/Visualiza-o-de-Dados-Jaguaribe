@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --background: #010101;
+  --background-block: #393e46;
+  --light: #eeeeee;
+  --green-light: #4ecca3;
+  --green-dark: #00adb5;
+  --orange-light: #ff6363;
+  --orange-dark: #d65a31;
+  --teste: #00FFFF;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: var(--background);
+  color: var(--light);
+}
+
+
+header {
+  background-color: var(--background-block);
+  padding: 20px;
+  text-align: center;
+  color: var(--light);
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 20px;
+  text-align: center;
+  padding: 20px;
+}
+.container h3 {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.canvasContainer {
+  background-color: var(--background-block);
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+.canvasContainer canvas {
+  margin-top: 20px;
+}
+.infoContainer {
+  background-color: var(--background-block);
+  border-radius: 6px;
+  padding: 10px 20px 10px 30px;
+  display: grid;
+  grid-template-rows: 1fr 400px 1fr;
+}
+.infoContainer #logs {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+#logs .log {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 300;
+}
+#logs .logHora {
+  font-size: 15px;
+}
+#logs .separador {
+  border-bottom: 1px solid white;
+  flex: 0.65;
+}
+#logs .logDado {
+  font-size: 20px;
+}
+.infoContainer .acoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.infoContainer #start {
+  background-color: var(--green-light);
+  flex: 1;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--background-block);
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  transition: 0.2s all ease-in-out;
+  cursor: pointer;
+}
+
+
+
+.infoContainer #start:hover {
+  background-color: var(--green-dark);
+  color: var(--light);
+}
+.infoContainer #start[disabled='disabled'] {
+  background-color: '#000';
+}
+.infoContainer #save {
+  background-color: var(--orange-dark);
+  margin-left: 10px;
+  flex: 1;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--light);
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  transition: 0.2s all ease-in-out;
+  cursor: pointer;
+}
+.infoContainer #save:hover {
+  background-color: var(--orange-light);
+  color: var(--background-block);
+}
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+#content {
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100%;
+  flex-direction: column;
+}
+#info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.mt-15 {
+  margin-top: 15px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex button {
+  margin-left: 15px;
+}
+
+#logs {
+  text-align: center;
+}
+#statusInfo {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}

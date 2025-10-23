@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoramento Remoto MQTT</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  </head>
+  <body>
+    <header>Monitoramento Remoto - Sensor de temperatura</header>
+    <section class="container" id="canvasContainer">
+      <div class="charts-grid">
+        <div class="canvasContainer">
+          <h3>Gráfico</h3>
+          <canvas width="100%" id="canvas"></canvas>
+        </div>
+        <div class="canvasContainer">
+          <h3>Turbidez</h3>
+          <canvas width="100%" id="canvasTurbidez"></canvas>
+        </div>
+        <div class="canvasContainer">
+          <h3>Sólidos Dissolvidos</h3>
+          <canvas width="100%" id="canvasSolidos"></canvas>
+        </div>
+        <div class="canvasContainer">
+          <h3>Condutividade</h3>
+          <canvas width="100%" id="canvasCondutividade"></canvas>
+        </div>
+        <div class="canvasContainer">
+          <h3>pH</h3>
+          <canvas width="100%" id="canvasPH"></canvas>
+        </div>
+      </div>
+      <div class="infoContainer">
+        <h3>dados recebidos</h3>
+        <div id="logs"></div>
+        <div class="acoes">
+          <button id="start">iniciar</button>
+          <button id="save">salvar</button>
+        </div>
+      </div>
+
+    </section>
+    <div class="flex">
+      <div id="" style="width: 60%"></div>
+    </div>
+
+    <div id="statusInfo"></div>
+    <script src="src/js/mqtt.min.js"></script>
+    <script src="src/js/chartjs.min.js"></script>
+    <script src="src/js/script-client.js"></script>
+  </body>
+</html>
