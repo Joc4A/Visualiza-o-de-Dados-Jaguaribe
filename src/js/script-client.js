@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const client = mqtt.connect('ec2-54-233-175-183.sa-east-1.compute.amazonaws.com:1883/mqtt');
   const data = [];
 
-  const tempTopic = 'mqtt/ufpb-inst/temp';
-  const turbidezTopic = 'mqtt/ufpb-inst/turbidez';
-  const solidosTopic = 'mqtt/ufpb-inst/solidos';
-  const condutividadeTopic = 'mqtt/ufpb-inst/condutividade';
-  const phTopic = 'mqtt/ufpb-inst/ph';
-  const controlTopic = 'mqtt/ufpb-inst/t';
+  const tempTopic = '/temp';
+  const turbidezTopic = '/turbidez';
+  const solidosTopic = '/solidos';
+  const condutividadeTopic = '/condutividade';
+  const phTopic = '/ph';
+  const controlTopic = '/controltopic';
 
   client.subscribe(tempTopic);
   client.subscribe(turbidezTopic);
