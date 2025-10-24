@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const client = mqtt.connect('ec2-54-233-175-183.sa-east-1.compute.amazonaws.com:1883');
+  const client = mqtt.connect('ec2-54-233-175-183.sa-east-1.compute.amazonaws.com:1883/mqtt');
   const data = [];
 
   const tempTopic = 'mqtt/ufpb-inst/temp';
