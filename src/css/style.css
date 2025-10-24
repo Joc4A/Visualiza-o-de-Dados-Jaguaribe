@@ -15,7 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 body {
   background-color: var(--background);
@@ -107,9 +107,6 @@ header {
   transition: 0.2s all ease-in-out;
   cursor: pointer;
 }
-
-
-
 .infoContainer #start:hover {
   background-color: var(--green-dark);
   color: var(--light);
