@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // const client = mqtt.connect('wss://broker.emqx.io:8084/mqtt');
-  const client = mqtt.connect('wss://broker.emqx.io:8084/mqtt');
+    const client = mqtt.connect('ws://54.233.175.183:8083/mqtt', {
+    clientId: 'emqx_NTEyNz',
+  });
 
   client.on('connect', () => {
     setTimeout(infoHide, 1000);
