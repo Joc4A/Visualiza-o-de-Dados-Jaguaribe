@@ -1,51 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const client = mqtt.connect('ws://54.233.175.183:8083/mqtt', {
-    clientId: 'emqx_NTEyNz',
-  });
+  const client = mqtt.connect('wss://broker.emqx.io:8084/mqtt');
 
-  client.on('connect', () => {
-    setTimeout(infoHide, 1000);
-    setInterval(send, 2000);
-  });
-  infoShow(
-    '<h3>Conectando </h3><img width="100px" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />'
-  );
+  const inputs = {
+    temp: document.getElementById('temp'),   // temperatura (°C)
+    cond: document.getElementById('condutividade'),   // condutividade (µS/cm)
+    turb: document.getElementById('turbidez'),   // turbidez (NTU)
+    tds:  document.getElementById('solidos'),    // sólidos dissolvidos (mg/L)
+    ph:   document.getElementById('ph')      // pH
+  };
 
-  function infoShow(text) {
-    const info = document.getElementById('info');
-    const content = document.getElementById('content');
-    info.innerHTML = text;
-    info.style.display = 'flex';
-    content.style.display = 'none';
-  }
-  function infoHide() {
-    const info = document.getElementById('info');
-    const content = document.getElementById('content');
-    info.style.display = 'none';
-    content.style.display = 'flex';
-  }
+  const topics = {
+    temp: 'mqtt/ufpb-inst/temp',
+    cond: 'mqtt/ufpb-inst/condutividade',
+    turb: 'mqtt/ufpb-inst/turbidez',
+    tds:  'mqtt/ufpb-inst/solidos_dissolvidos',
+    ph:   'mqtt/ufpb-inst/ph'
+  };
 
-  const tempInput = document.getElementById('temp');
-  const valueLabel = document.getElementById('value');
-  const button = document.querySelector('button');
   const logs = document.getElementById('logs');
-  let value = tempInput.value;
+  const button = document.querySelector('button');
 
-  tempInput.addEventListener('change', (e) => {
-    value = e.target.value;
-    valueLabel.innerHTML = `${value} ºC`;
-  });
-  button.addEventListener('click', () => {
-    try {
-      client.publish('mqtt/ufpb-inst/temp', value.toString());
-      const date = new Date();
-      logs.innerHTML += `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} - Enviou ${value} ºC <br />`;
-    } catch (error) {}
+  function logLine(text) {
+    if (!logs) return;
+    const d = new Date();
+    const hh = String(d.getHours()).padStart(2, '0');
+    const mm = String(d.getMinutes()).padStart(2, '0');
+    const ss = String(d.getSeconds()).padStart(2, '0');
+    logs.innerHTML += `${hh}:${mm}:${ss} - ${text}<br/>`;
+  }
+
+  function publishAll() {
+    Object.keys(inputs).forEach(key => {
+      const val = inputs[key]?.value;
+      if (val !== null && val !== undefined && val !== '') {
+        client.publish(topics[key], val.toString());
+        logLine(`Enviou ${key.toUpperCase()}: ${val}`);
+      }
+    });
+  }
+
+  // conecta no broker
+  client.on('connect', () => {
+    logLine('Conectado ao broker EMQX');
+    // publica periodicamente
+    setInterval(publishAll, 2000);
   });
 
-  function send() {
-    //const number = Math.floor(Math.random() * 0 + 25);
-    //client.publish('mqtt/ufpb-inst/temp', number.toString());
-    client.publish('mqtt/ufpb-inst/temp', value.toString());
+  // clique do botão publica na hora
+  if (button) {
+    button.addEventListener('click', publishAll);
   }
 });
