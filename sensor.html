@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <header>Monitoramento Remoto - Sensor de temperatura</header>
+    <header>Monitoramento Remoto - Sensores</header>
     <div id="info"></div>
     <div id="content">
       <div class="flex">
@@ -18,10 +18,33 @@
       <div class="mt-15">
         <label for="tem">Temperatura: </label><span id="value">30 ºC</span>
       </div>
+      <div class="flex">
+        <input type="range" id="turbidez" name="turbidez" min="0" max="100" value="50" />
+      </div>
+      <div class="mt-15">
+        <label for="turbidez">Turbidez: </label><span id="value-turbidez">50 NTU</span>
+      </div>
+      <div class="flex">
+        <input type="range" id="solidos" name="solidos" min="0" max="100" value="50" />
+      </div>
+      <div class="mt-15">
+        <label for="solidos">Sólidos: </label><span id="value-solidos">50 ppm</span>
+      </div>
+      <div class="flex">
+        <input type="range" id="condutividade" name="condutividade" min="0" max="100" value="50" />
+      </div>
+      <div class="mt-15">
+        <label for="condutividade">Condutividade: </label><span id="value-condutividade">50 µS/cm</span>
+      </div>
+      <div class="flex">
+        <input type="range" id="ph" name="ph" min="0" max="14" value="7" />
+      </div>
+      <div class="mt-15">
+        <label for="ph">pH: </label><span id="value-ph"></span>
+      </div>
       <div id="logs" class="mt-15"></div>
     </div>
     <script src="src/js/mqtt.min.js"></script>
     <script src="src/js/script-sensor.js"></script>
   </body>
 </html>
-
