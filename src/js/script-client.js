@@ -1,22 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const client = mqtt.connect('ws://54.233.175.183:8083/mqtt', {
-    clientId: 'emqx_NTEyNz',
-  });
+  const client = mqtt.connect('wss://broker.emqx.io:8084/mqtt');
   const data = [];
 
-  const tempTopic = '/temp';
-  const turbidezTopic = '/turbidez';
-  const solidosTopic = '/solidos';
-  const condutividadeTopic = '/condutividade';
-  const phTopic = '/ph';
-  const controlTopic = '/controltopic';
+  const tempTopic = 'mqtt/ufpb-inst/temp';
+  const turbidezTopic = 'mqtt/ufpb-inst/turbidez';
+  const solidosTopic = 'mqtt/ufpb-inst/solidos_dissolvidos';
+  const condutividadeTopic = 'mqtt/ufpb-inst/condutividade';
+  const phTopic = 'mqtt/ufpb-inst/ph';
+  
 
   client.subscribe(tempTopic);
   client.subscribe(turbidezTopic);
   client.subscribe(solidosTopic);
   client.subscribe(condutividadeTopic);
   client.subscribe(phTopic);
-  client.subscribe(controlTopic);
+  
 
   client.on('message', function (topic, payload) {
     try {
